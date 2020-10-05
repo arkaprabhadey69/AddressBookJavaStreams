@@ -45,16 +45,6 @@ public class AddressBookMain {
     public void FindName(String city)
     {
 
-//        for(int i=0;i<persons.size();i++)
-//        {
-//            Contact d= (Contact)persons.get(i);
-//
-//            if(city.equals(d.city))
-//            {
-//                System.out.println("\n"+d.firstname+" "+d.lastname+" "+d.address+" "+d.city+" "+d.email+" "+d.zip+"\n");
-//            }
-//
-//        }
         List<Contact> list= persons.stream()
                 .filter(p->p.getCity().equals(city))
                 .collect(Collectors.toList());
