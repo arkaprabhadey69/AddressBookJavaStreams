@@ -77,6 +77,12 @@ public class AddressBookMain {
         int list= Math.toIntExact(persons.stream().filter(p -> p.getState().equals(state)).count());
         System.out.println("The number of people living in this state in this address book is: "+list);
     }
+    public void FindCountContactNameByCity(String city)
+    {
+
+        int list= Math.toIntExact(persons.stream().filter(p -> p.getCity().equals(city)).count());
+        System.out.println("The number of people living in this city in this address book is: "+list);
+    }
 
     public void SortNames()
     {

@@ -95,26 +95,18 @@ public class AddressBookList {
             AddressBookMain a1= entry.getValue();
             a1.FindCountContactName(state);
         }
-        //System.out.println("Total number of people in this state: "+count);
+
     }
     public void CountByCity(String city)
     {
         int count1=0;
         for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
         {
+            AddressBookMain a1= entry.getValue();
+            a1.FindCountContactName(city);
 
-            for(int i=0;i<(entry.getValue()).persons.size();i++)
-            {
-                Contact d= (Contact)entry.getValue().persons.get(i);
-
-                if(city.equals(d.city))
-                {
-                    count1++;
-                }
-
-            }
         }
-        System.out.println("Total number of people in this city: "+count1);
+      //  System.out.println("Total number of people in this city: "+count1);
     }
 
     public void SearchContactByHash(String city){
