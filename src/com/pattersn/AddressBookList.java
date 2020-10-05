@@ -106,7 +106,7 @@ public class AddressBookList {
             a1.FindCountContactName(city);
 
         }
-      //  System.out.println("Total number of people in this city: "+count1);
+
     }
 
     public void SearchContactByHash(String city){
