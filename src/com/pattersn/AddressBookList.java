@@ -112,9 +112,12 @@ public class AddressBookList {
     public void SearchContactByHash(String city){
         for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
         {
-            AddressBookMain addBook=entry.getValue();
-            System.out.println("Address Book : "+entry.getKey());
-            addBook.FindPersonByHash(city);
+            AddressBookMain addBook = entry.getValue();
+            ArrayList<Contact> contacts = addBook.CityPersonMap.entrySet().stream().filter(findState -> findState.getKey().equals(city)).map(Map.Entry::getValue).findFirst().orElse(null);
+            for(Contact contact:contacts)
+            {
+                System.out.println(contact.firstname+" "+contact.lastname+" "+contact.address+" "+contact.city+" "+contact.email+" "+contact.number+" "+contact.state+" "+contact.zip+"\n");
+            }
         }
 
     }
@@ -122,9 +125,12 @@ public class AddressBookList {
     {
         for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
         {
-            AddressBookMain addBook=entry.getValue();
-            System.out.println("Address Book : "+entry.getKey());
-            addBook.FindPersonByHashState(state);
+            AddressBookMain addBook = entry.getValue();
+            ArrayList<Contact> contacts = addBook.StatePersonMap.entrySet().stream().filter(findState -> findState.getKey().equals(state)).map(Map.Entry::getValue).findFirst().orElse(null);
+            for(Contact contact:contacts)
+            {
+                System.out.println(contact.firstname+" "+contact.lastname+" "+contact.address+" "+contact.city+" "+contact.email+" "+contact.number+" "+contact.state+" "+contact.zip+"\n");
+            }
         }
 
     }

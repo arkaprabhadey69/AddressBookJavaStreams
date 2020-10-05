@@ -78,7 +78,31 @@ public class AddressBookMain {
     {
 
         List<Contact> list = persons.stream()
-                .sorted(Comparator.comparing(Contact::getName))
+                .sorted(Comparator.comparing(Contact::getCity))
+                .collect(Collectors.toList());
+
+        for(Contact c: list) {
+            System.out.println(c.firstname);
+        }
+
+    }
+    public void SortNamesbyZip()
+    {
+
+        List<Contact> list = persons.stream()
+                .sorted(Comparator.comparing(Contact::getZip))
+                .collect(Collectors.toList());
+
+        for(Contact c: list) {
+            System.out.println(c.firstname);
+        }
+
+    }
+    public void SortNamesbyState()
+    {
+
+        List<Contact> list = persons.stream()
+                .sorted(Comparator.comparing(Contact::getState))
                 .collect(Collectors.toList());
 
         for(Contact c: list) {
@@ -107,13 +131,15 @@ public class AddressBookMain {
 
     public void FindPersonByHash(String city)
     {
-        ArrayList<Contact> person1 = new ArrayList<Contact>();
-        person1 = CityPersonMap.get(city);
-        for(int i=0;i<person1.size();i++){
-            System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
-                    " Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
-                    " Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
-        }
+//        ArrayList<Contact> person1 = new ArrayList<Contact>();
+//        person1 = CityPersonMap.get(city);
+//        for(int i=0;i<person1.size();i++){
+//            System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
+//                    " Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
+//                    " Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
+//        }
+
+
 
 
     }

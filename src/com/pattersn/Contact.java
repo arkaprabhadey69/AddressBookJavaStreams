@@ -45,6 +45,7 @@ public class Contact {
     {
         return firstname;
     }
+    public String getZip(){return zip;}
 
 
 
