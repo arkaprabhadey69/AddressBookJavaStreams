@@ -1,6 +1,10 @@
 package com.pattersn;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -19,6 +23,42 @@ public class AddressBookMain {
         persons = new ArrayList<Contact>();
         StatePersonMap = new HashMap<String,ArrayList<Contact>>();
         CityPersonMap = new HashMap<String,ArrayList<Contact>>();
+
+    }
+    public void writeData(ArrayList<Contact> persons) {
+        StringBuffer empBuffer = new StringBuffer();
+        persons.forEach(employee -> {
+            String employeeDataString = employee.toString().concat("\n");
+            empBuffer.append(employeeDataString);
+        });
+        try {
+            Files.write(Paths.get("address-file.txt"), empBuffer.toString().getBytes());
+
+        } catch (IOException e) {
+
+        }
+    }
+
+    public long countEntries() {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File("address-file.txt").toPath())
+                    .count();
+        } catch (IOException e) {
+
+        }
+        return entries;
+    }
+
+    public ArrayList<Contact> readData(ArrayList<Contact> employeePayrollList) {
+
+        try {
+            Files.lines(new File("address-file.txt").toPath()).map(line -> line.trim()).forEach(line -> System.out.println(line));
+
+        } catch (IOException e) {
+
+        }
+        return employeePayrollList;
 
     }
 
@@ -78,7 +118,7 @@ public class AddressBookMain {
     {
 
         List<Contact> list = persons.stream()
-                .sorted(Comparator.comparing(Contact::getCity))
+                .sorted(Comparator.comparing(Contact::getName))
                 .collect(Collectors.toList());
 
         for(Contact c: list) {
@@ -131,13 +171,13 @@ public class AddressBookMain {
 
     public void FindPersonByHash(String city)
     {
-//        ArrayList<Contact> person1 = new ArrayList<Contact>();
-//        person1 = CityPersonMap.get(city);
-//        for(int i=0;i<person1.size();i++){
-//            System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
-//                    " Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
-//                    " Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
-//        }
+        ArrayList<Contact> person1 = new ArrayList<Contact>();
+        person1 = CityPersonMap.get(city);
+        for(int i=0;i<person1.size();i++){
+            System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
+                    " Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
+                    " Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
+        }
 
 
 
@@ -161,17 +201,6 @@ public class AddressBookMain {
         System.out.println("Enter your details\n");
         System.out.println("Firstname\n");
         x=s2.nextLine();
-//        for(int i=0;i<persons.size();i++)
-//        {
-//            Contact c= (Contact)persons.get(i);
-//
-//            if(x.equals(c.firstname))
-//            {
-//                System.out.println("Error!Name Already taken!");
-//                return;
-//            }
-//
-//        }
         System.out.println("Lastname\n");
         y=s2.nextLine();
         System.out.println("Address\n");

@@ -47,7 +47,19 @@ public class Contact {
     }
     public String getZip(){return zip;}
 
-
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", number='" + number + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 
 
 
