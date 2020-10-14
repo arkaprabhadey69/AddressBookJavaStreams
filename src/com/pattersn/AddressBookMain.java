@@ -25,6 +25,7 @@ public class AddressBookMain {
         CityPersonMap = new HashMap<String,ArrayList<Contact>>();
 
     }
+    //Method to add data to a file
     public void writeData(ArrayList<Contact> persons) {
         StringBuffer empBuffer = new StringBuffer();
         persons.forEach(employee -> {
@@ -38,7 +39,7 @@ public class AddressBookMain {
 
         }
     }
-
+//Method to count entries in a file
     public long countEntries() {
         long entries = 0;
         try {
@@ -49,8 +50,8 @@ public class AddressBookMain {
         }
         return entries;
     }
-
-    public ArrayList<Contact> readData(ArrayList<Contact> employeePayrollList) {
+//Method to read data from a file
+    public long readData(ArrayList<Contact> employeePayrollList) {
 
         try {
             Files.lines(new File("address-file.txt").toPath()).map(line -> line.trim()).forEach(line -> System.out.println(line));
@@ -58,7 +59,7 @@ public class AddressBookMain {
         } catch (IOException e) {
 
         }
-        return employeePayrollList;
+        return employeePayrollList.size();
 
     }
 
